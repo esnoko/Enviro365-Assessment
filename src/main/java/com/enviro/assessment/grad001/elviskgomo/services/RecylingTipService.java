@@ -15,4 +15,8 @@ public class RecylingTipService {
     public List<RecyclingTip> getAllTip(){
         return repo.findAll();
     }
+
+    public RecyclingTip createTip(RecyclingTip tip){
+        return repo.save(tip);
+    }
 }
