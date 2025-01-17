@@ -2,7 +2,6 @@ package com.enviro.assessment.grad001.elviskgomo.controllers;
 
 import com.enviro.assessment.grad001.elviskgomo.model.WasteCategory;
 import com.enviro.assessment.grad001.elviskgomo.services.WasteCategoryService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +36,7 @@ public class WasteCategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id,@Valid @RequestBody WasteCategory category) {
+    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id, @Valid @RequestBody WasteCategory category) {
         return ResponseEntity.ok(service.updateCategory(id, category));
     }
 
@@ -45,5 +44,10 @@ public class WasteCategoryController {
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         service.deleteCategory(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<WasteCategory>> searchCategories(@RequestParam String name) {
+        return ResponseEntity.ok(service.searchCategoriesByName(name));
     }
 }

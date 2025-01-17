@@ -1,7 +1,7 @@
 package com.enviro.assessment.grad001.elviskgomo.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 public class RecyclingTip {
@@ -9,40 +9,35 @@ public class RecyclingTip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    @NotNull(message = "Tip content is required")
-    private String tip;
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private WasteCategory category;
 
-    //Get ID
+    @NotEmpty(message = "Title cannot be empty")
+    private String title;
+
+    @NotEmpty(message = "Content cannot be empty")
+    private String content;
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
 
-    //Set ID
     public void setId(Long id) {
         this.id = id;
     }
 
-    //Get tip
-    public String getTip() {
-        return tip;
+    public String getTitle() {
+        return title;
     }
 
-    //Set tip
-    public void setTip(String tip) {
-        this.tip = tip;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    //Get category
-    public WasteCategory getCategory() {
-        return category;
+    public String getContent() {
+        return content;
     }
 
-    //Set category
-    public void setCategory(WasteCategory category) {
-        this.category = category;
+    public void setContent(String content) {
+        this.content = content;
     }
 }
