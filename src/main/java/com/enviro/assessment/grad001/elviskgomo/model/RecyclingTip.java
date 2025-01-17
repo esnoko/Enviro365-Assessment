@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.elviskgomo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class RecyclingTip {
@@ -9,6 +10,7 @@ public class RecyclingTip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @NotNull(message = "Tip content is required")
     private String tip;
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)

@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.elviskgomo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class DisposalGuideline {
@@ -8,6 +9,7 @@ public class DisposalGuideline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @NotNull(message = "Guideline content is required")
     private String guideline;
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)

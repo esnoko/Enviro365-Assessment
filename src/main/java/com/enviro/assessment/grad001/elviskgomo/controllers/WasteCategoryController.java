@@ -2,13 +2,17 @@ package com.enviro.assessment.grad001.elviskgomo.controllers;
 
 import com.enviro.assessment.grad001.elviskgomo.model.WasteCategory;
 import com.enviro.assessment.grad001.elviskgomo.services.WasteCategoryService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/waste-categories")
+@Validated
 public class WasteCategoryController {
 
     private final WasteCategoryService service;
@@ -28,12 +32,12 @@ public class WasteCategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<WasteCategory> createCategory(@RequestBody WasteCategory category) {
+    public ResponseEntity<WasteCategory> createCategory(@Valid @RequestBody WasteCategory category) {
         return ResponseEntity.ok(service.createCategory(category));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id, @RequestBody WasteCategory category) {
+    public ResponseEntity<WasteCategory> updateCategory(@PathVariable Long id,@Valid @RequestBody WasteCategory category) {
         return ResponseEntity.ok(service.updateCategory(id, category));
     }
 
