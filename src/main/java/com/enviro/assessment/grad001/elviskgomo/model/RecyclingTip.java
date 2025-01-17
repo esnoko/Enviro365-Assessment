@@ -2,6 +2,8 @@ package com.enviro.assessment.grad001.elviskgomo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class RecyclingTip {
@@ -10,6 +12,8 @@ public class RecyclingTip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "Recycling tip description cannot be null")
+    @Size(min = 10, max = 500, message = "Recycling tip description must be between 10 and 500 characters")
     @NotEmpty(message = "Title cannot be empty")
     private String title;
 
