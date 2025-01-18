@@ -56,7 +56,7 @@ The application uses an H2 in-memory database for testing and development purpos
 
 Access the H2 Console:
 ```
-http://localhost:9090/h2
+http://localhost:9090/h2-console
 ```
 
 ## API Endpoints
